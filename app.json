@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/flow/flow",
+    "pages/user/user",
+    "pages/business/business"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "中网优能",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/flow/flow",
+        "text": "流量",
+        "iconPath": "img/icons/flow_normal.png",
+        "selectedIconPath": "img/icons/flow_selected.png"
+      },{
+        "pagePath": "pages/user/user",
+        "text": "用户",
+        "iconPath": "img/icons/user_normal.png",
+        "selectedIconPath": "img/icons/user_selected.png"
+      },
+      {
+        "pagePath": "pages/business/business",
+        "text": "业务",
+        "iconPath": "img/icons/business_normal.png",
+        "selectedIconPath": "img/icons/business_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
