@@ -1,4 +1,21 @@
-ec-canvas {
-  width: 90%;
-  height: 80%;
+
+#mychart-dom-multi-1 {
+  width:90%;
+  height:50%;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#mychart-dom-multi-2 {
+  width:90%;
+  height:50%;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#mychart-dom-multi-3 {
+  width:90%;
+  height:50%;
+  margin-top:10px;
+  margin-bottom:10px;
 }

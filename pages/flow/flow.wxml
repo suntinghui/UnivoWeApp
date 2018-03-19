@@ -1,3 +1,14 @@
+
 <view class="container">
-  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+
+  <!-- 7天流量走势图 -->
+  <ec-canvas id="mychart-dom-multi-1" canvas-id="mychart-multi-1" ec="{{ ec1 }}"></ec-canvas>
+
+  <!-- 周流量走势图 -->
+  <ec-canvas id="mychart-dom-multi-2" canvas-id="mychart-multi-2" ec="{{ ec2 }}"></ec-canvas>
+
+  <!-- 当日流量状态 -->
+  <ec-canvas id="mychart-dom-multi-3" canvas-id="mychart-multi-3" ec="{{ ec3 }}"></ec-canvas>
+
+
 </view>
