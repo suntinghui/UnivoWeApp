@@ -11,7 +11,7 @@ function initChart(canvas, width, height) {
 
   var option = {
     title: {
-      text: '连接分布',
+      text: '协议分类流量走势',
       x: 'center'
     },
     tooltip: {
