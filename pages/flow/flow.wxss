@@ -1,21 +1,68 @@
+.setting {
+  display: flex;
+  flex-direction: row;
+  height: 180rpx;
+}
 
 #mychart-dom-multi-1 {
   width:90%;
   height:50%;
-  margin-top:10px;
-  margin-bottom:10px;
+  margin-top:180rpx;
+  margin-bottom:10rpx;
 }
 
 #mychart-dom-multi-2 {
   width:90%;
   height:50%;
-  margin-top:10px;
-  margin-bottom:10px;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
 }
 
 #mychart-dom-multi-3 {
   width:90%;
   height:50%;
-  margin-top:10px;
-  margin-bottom:10px;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+
+#mychart-dom-multi-4 {
+  width:90%;
+  height:50%;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+
+#mychart-dom-multi-5 {
+  width:90%;
+  height:50%;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+
+#mychart-dom-multi-6 {
+  width:90%;
+  height:50%;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+
+#mychart-dom-multi-7 {
+  width:90%;
+  height:50%;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+
+#mychart-dom-multi-8 {
+  width:90%;
+  height:50%;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+
+#mychart-dom-multi-9 {
+  width:90%;
+  height:50%;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
 }

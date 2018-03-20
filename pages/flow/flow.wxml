@@ -1,5 +1,10 @@
-
 <view class="container">
+
+  <view class="setting">
+    <view style="width:300rpx;height:50px;">LOGO</view>
+    <view style="width:200rpx;height:50rpx;">日期</view>
+    <image style="width:80rpx;height:80rpx;" src="../../img/icons/daily.png" bindtap='queryDailyAction' ></image>
+  </view>
 
   <!-- 7天流量走势图 -->
   <ec-canvas id="mychart-dom-multi-1" canvas-id="mychart-multi-1" ec="{{ ec1 }}"></ec-canvas>
@@ -9,6 +14,24 @@
 
   <!-- 当日流量状态 -->
   <ec-canvas id="mychart-dom-multi-3" canvas-id="mychart-multi-3" ec="{{ ec3 }}"></ec-canvas>
+
+  <!-- 分协议流量分布 -->
+  <ec-canvas id="mychart-dom-multi-4" canvas-id="mychart-multi-4" ec="{{ ec4 }}"></ec-canvas>
+
+  <!-- 用户流量均值 -->
+  <ec-canvas id="mychart-dom-multi-5" canvas-id="mychart-multi-5" ec="{{ ec5 }}"></ec-canvas>
+
+  <!-- 区间流量用户分布 -->
+  <ec-canvas id="mychart-dom-multi-6" canvas-id="mychart-multi-6" ec="{{ ec6 }}"></ec-canvas>
+
+  <!-- 分运营商流量分布 -->
+  <ec-canvas id="mychart-dom-multi-7" canvas-id="mychart-multi-7" ec="{{ ec7 }}"></ec-canvas>
+
+  <!-- 目标地址流量分布 -->
+  <ec-canvas id="mychart-dom-multi-8" canvas-id="mychart-multi-8" ec="{{ ec8 }}"></ec-canvas>
+
+  <!-- 分运营商应用分布 -->
+  <ec-canvas id="mychart-dom-multi-9" canvas-id="mychart-multi-9" ec="{{ ec9 }}"></ec-canvas>
 
 
 </view>

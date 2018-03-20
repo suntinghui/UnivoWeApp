@@ -1,0 +1,7 @@
+<text class='tip'>请选择日期类型</text>
+
+<radio-group class="radio-group" bindchange="radioChange">
+  <radio class='typeRadio' value="day" checked="true">按天</radio>
+  <radio class='typeRadio' value="week" checked="false">按周</radio>
+  <radio class='typeRadio' value="month" checked="false">按月</radio>
+</radio-group>

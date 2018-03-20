@@ -48,11 +48,95 @@ Page({
         this.chart3 = chart3;
         chart3.setOption(getOption3());
       }
-    }
+    },
+
+    ec4: {
+      onInit: function (canvas, width, height) {
+        const chart4 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart4);
+
+        this.chart4 = chart4;
+        chart4.setOption(getOption4());
+      }
+    },
+
+    ec5: {
+      onInit: function (canvas, width, height) {
+        const chart5 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart5);
+
+        this.chart5 = chart5;
+        chart5.setOption(getOption5());
+      }
+    },
+
+    ec6: {
+      onInit: function (canvas, width, height) {
+        const chart6 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart6);
+
+        this.chart6 = chart6;
+        chart6.setOption(getOption6());
+      }
+    },
+
+    ec7: {
+      onInit: function (canvas, width, height) {
+        const chart7 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart7);
+
+        this.chart7 = chart7;
+        chart7.setOption(getOption7());
+      }
+    },
+
+    ec8: {
+      onInit: function (canvas, width, height) {
+        const chart8 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart8);
+
+        this.chart8 = chart8;
+        chart8.setOption(getOption8());
+      }
+    },
+
+    ec9: {
+      onInit: function (canvas, width, height) {
+        const chart9 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart9);
+
+        this.chart9 = chart9;
+        chart9.setOption(getOption9());
+      }
+    },
+
+
   },
 
-  onReady() {
-  }
+  queryDailyAction: function (event) {
+    wx.navigateTo({
+      url: '../daily/daily'
+    })
+  },
+
 });
 
 
@@ -222,6 +306,258 @@ function getOption2() {
 }
 
 function getOption3() {
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '总价(万元)',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }],
+    series: [{
+      name: '包租费',
+      type: 'bar',
+      data: [20, 12, 31, 34, 31]
+    }, {
+      name: '装修费',
+      type: 'bar',
+      data: [10, 20, 5, 9, 3]
+    }]
+  };
+
+  return option;
+}
+
+function getOption4() {
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '总价(万元)',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }],
+    series: [{
+      name: '包租费',
+      type: 'bar',
+      data: [20, 12, 31, 34, 31]
+    }, {
+      name: '装修费',
+      type: 'bar',
+      data: [10, 20, 5, 9, 3]
+    }]
+  };
+
+  return option;
+}
+
+function getOption5() {
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '总价(万元)',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }],
+    series: [{
+      name: '包租费',
+      type: 'bar',
+      data: [20, 12, 31, 34, 31]
+    }, {
+      name: '装修费',
+      type: 'bar',
+      data: [10, 20, 5, 9, 3]
+    }]
+  };
+
+  return option;
+}
+
+function getOption6() {
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '总价(万元)',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }],
+    series: [{
+      name: '包租费',
+      type: 'bar',
+      data: [20, 12, 31, 34, 31]
+    }, {
+      name: '装修费',
+      type: 'bar',
+      data: [10, 20, 5, 9, 3]
+    }]
+  };
+
+  return option;
+}
+
+function getOption7() {
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '总价(万元)',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }],
+    series: [{
+      name: '包租费',
+      type: 'bar',
+      data: [20, 12, 31, 34, 31]
+    }, {
+      name: '装修费',
+      type: 'bar',
+      data: [10, 20, 5, 9, 3]
+    }]
+  };
+
+  return option;
+}
+
+function getOption8() {
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '总价(万元)',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }],
+    series: [{
+      name: '包租费',
+      type: 'bar',
+      data: [20, 12, 31, 34, 31]
+    }, {
+      name: '装修费',
+      type: 'bar',
+      data: [10, 20, 5, 9, 3]
+    }]
+  };
+
+  return option;
+}
+
+function getOption9() {
   var option = {
     title: {
       text: '7天流量走势图'
