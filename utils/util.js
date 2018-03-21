@@ -14,6 +14,21 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
+// 取得当前的日期，格式为YYYY-MM-dd
+function getCurrentDate() {
+  var myDate = new Date();
+  var month = myDate.getMonth() + 1;
+  if (month < 10) {
+    return myDate.getFullYear() + "-0" + month + "-" + myDate.getDate();
+  } else {
+    return myDate.getFullYear() + "-" + month + "-" + myDate.getDate();
+  }
+
 }
+
+module.exports = {
+  formatTime: formatTime,
+  getCurrentDate: getCurrentDate
+}
+
+

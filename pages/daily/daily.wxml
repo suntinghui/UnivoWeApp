@@ -1,7 +1,25 @@
-<text class='tip'>请选择日期类型</text>
+<view class='dateContent'>
+  <text class='currentDate'>{{currentDate}}</text>
+
+  <view class="">
+    <picker mode="date" value="{{currentDate}}" start="2010-01-01" end="2025-12-31" bindchange='changeDate'>
+      <button class='changeDateBtn'>切换日期</button>
+    </picker>
+  </view>
+
+</view>
+
+<text class='tip'>请选择查询类型</text>
 
 <radio-group class="radio-group" bindchange="radioChange">
-  <radio class='typeRadio' value="day" checked="true">按天</radio>
-  <radio class='typeRadio' value="week" checked="false">按周</radio>
-  <radio class='typeRadio' value="month" checked="false">按月</radio>
+  <label wx:for-items="{{dateTypeArr}}">
+    <radio class='typeRadio' value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+  </label>
 </radio-group>
+
+<text class='tip'>请选择设备</text>
+<checkbox-group style='display: flex;flex-direction: column;' bindchange="checkboxChange">
+  <label class="checkbox" wx:for="{{deviceArray}}">
+    <checkbox class='deviceCheckbox' value="{{item.name}}" checked="{{item.checked}}">{{item.value}}</checkbox>
+  </label>
+</checkbox-group>

@@ -1,4 +1,7 @@
 //app.js
+
+var util = require('/utils/util.js')
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -34,6 +37,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    queryDate: util.getCurrentDate(),// 查询日期
+    queryDateType: "day", //查询类型
+    queryDeviceArr:[] // 设备列表
   }
 })

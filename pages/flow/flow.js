@@ -132,12 +132,33 @@ Page({
   },
 
   queryDailyAction: function (event) {
-    wx.navigateTo({
-      url: '../daily/daily'
-    })
+    // wx.navigateTo({
+    //   url: '../daily/daily'
+    // })
+
+    getRequest();
   },
 
 });
+
+function getRequest() {
+  wx.request({
+    url: 'https://wx.cne-c.com/mobile/api/app',
+    method: 'GET',
+    data: {
+      start: '20180310',
+      end: '20180315',
+      dim:'app.flowtrend',
+      type:'day'
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      console.log(res.data)
+    }
+  })
+}
 
 
 function getOption1() {

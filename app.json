@@ -1,10 +1,9 @@
 {
   "pages": [
-    "pages/daily/daily",
     "pages/flow/flow",
     "pages/user/user",
-    "pages/business/business"
-    
+    "pages/business/business",
+    "pages/daily/daily"
   ],
   "window": {
     "backgroundTextStyle": "light",
