@@ -1,9 +1,9 @@
 <view class="container">
 
   <view class="setting">
-    <view style="width:300rpx;height:50px;">LOGO</view>
-    <view style="width:200rpx;height:50rpx;">日期</view>
-    <image style="width:80rpx;height:80rpx;" src="../../img/icons/daily.png" bindtap='queryDailyAction' ></image>
+    <image src='../../img/icons/topImg.png' mode='widthFix' style='width:300rpx;'></image>
+    <view style='flex:1;'></view>
+    <image style="width:60rpx;margin-top:30rpx;"  mode='widthFix' src="../../img/icons/setting.png" bindtap='settingAction' ></image>
   </view>
 
   <!-- 7天流量走势图 -->

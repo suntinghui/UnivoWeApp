@@ -1,14 +1,10 @@
 import * as echarts from '../../ec-canvas/echarts';
 
+var util = require('../../utils/util.js');
+
+const initData = [];
+
 Page({
-  onShareAppMessage: function (res) {
-    return {
-      title: '中网优能数据展示平台',
-      path: '/pages/flow/flow',
-      success: function () { },
-      fail: function () { }
-    }
-  },
   data: {
     ec1: {
       onInit: function (canvas, width, height) {
@@ -17,10 +13,7 @@ Page({
           height: height
         });
         canvas.setChart(chart1);
-
-        // 将 barChart 绑定到 this，以供其他函数访问
-        this.chart1 = chart1;
-        chart1.setOption(getOption1());
+        chart1.setOption(refreshOption1(initData));
       }
     },
 
@@ -32,8 +25,7 @@ Page({
         });
         canvas.setChart(chart2);
 
-        this.chart2 = chart2;
-        chart2.setOption(getOption2());
+        chart2.setOption(refreshOption2([initData]));
       }
     },
 
@@ -45,8 +37,7 @@ Page({
         });
         canvas.setChart(chart3);
 
-        this.chart3 = chart3;
-        chart3.setOption(getOption3());
+        chart3.setOption(refreshOption3(initData));
       }
     },
 
@@ -58,8 +49,7 @@ Page({
         });
         canvas.setChart(chart4);
 
-        this.chart4 = chart4;
-        chart4.setOption(getOption4());
+        chart4.setOption(refreshOption4(initData));
       }
     },
 
@@ -71,8 +61,7 @@ Page({
         });
         canvas.setChart(chart5);
 
-        this.chart5 = chart5;
-        chart5.setOption(getOption5());
+        chart5.setOption(refreshOption5(initData));
       }
     },
 
@@ -84,8 +73,7 @@ Page({
         });
         canvas.setChart(chart6);
 
-        this.chart6 = chart6;
-        chart6.setOption(getOption6());
+        chart6.setOption(refreshOption6(initData));
       }
     },
 
@@ -97,8 +85,7 @@ Page({
         });
         canvas.setChart(chart7);
 
-        this.chart7 = chart7;
-        chart7.setOption(getOption7());
+        chart7.setOption(refreshOption7(initData));
       }
     },
 
@@ -110,8 +97,7 @@ Page({
         });
         canvas.setChart(chart8);
 
-        this.chart8 = chart8;
-        chart8.setOption(getOption8());
+        chart8.setOption(refreshOption8(initData));
       }
     },
 
@@ -123,31 +109,32 @@ Page({
         });
         canvas.setChart(chart9);
 
-        this.chart9 = chart9;
-        chart9.setOption(getOption9());
+        chart9.setOption(refreshOption9(initData));
       }
     },
-
-
   },
 
-  queryDailyAction: function (event) {
-    // wx.navigateTo({
-    //   url: '../daily/daily'
-    // })
+  onReady: function(){
+    requestChart1();
+  },
 
-    getRequest();
+  settingAction: function (event) {
+    wx.navigateTo({
+      url: '../daily/daily'
+    })
   },
 
 });
 
-function getRequest() {
+function requestChart1() {
+  wx.showNavigationBarLoading();
+
   wx.request({
     url: 'https://wx.cne-c.com/mobile/api/app',
     method: 'GET',
     data: {
-      start: '20180310',
-      end: '20180315',
+      start: '20180301',
+      end: '20180321',
       dim:'app.flowtrend',
       type:'day'
     },
@@ -155,13 +142,23 @@ function getRequest() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data)
+      console.log(res.data);
+
+      refreshOption1(res.data);
+    },
+    fail:function(e) {
+      console.log(e);
+      
+    },
+    complete:function() {
+      wx.hideNavigationBarLoading();
     }
   })
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////
 
-function getOption1() {
+function refreshOption1(data) {
   return {
     color: ['#37a2da', '#32c5e9', '#67e0e3'],
     tooltip: {
@@ -247,7 +244,7 @@ function getOption1() {
   };
 }
 
-function getOption2() {
+function refreshOption2() {
 
   var data = [];
   var data2 = [];
@@ -326,7 +323,7 @@ function getOption2() {
   };
 }
 
-function getOption3() {
+function refreshOption3() {
   var option = {
     title: {
       text: '7天流量走势图'
@@ -368,7 +365,7 @@ function getOption3() {
   return option;
 }
 
-function getOption4() {
+function refreshOption4() {
   var option = {
     title: {
       text: '7天流量走势图'
@@ -410,7 +407,7 @@ function getOption4() {
   return option;
 }
 
-function getOption5() {
+function refreshOption5() {
   var option = {
     title: {
       text: '7天流量走势图'
@@ -452,7 +449,7 @@ function getOption5() {
   return option;
 }
 
-function getOption6() {
+function refreshOption6() {
   var option = {
     title: {
       text: '7天流量走势图'
@@ -494,7 +491,7 @@ function getOption6() {
   return option;
 }
 
-function getOption7() {
+function refreshOption7() {
   var option = {
     title: {
       text: '7天流量走势图'
@@ -536,7 +533,7 @@ function getOption7() {
   return option;
 }
 
-function getOption8() {
+function refreshOption8() {
   var option = {
     title: {
       text: '7天流量走势图'
@@ -578,7 +575,7 @@ function getOption8() {
   return option;
 }
 
-function getOption9() {
+function refreshOption9() {
   var option = {
     title: {
       text: '7天流量走势图'

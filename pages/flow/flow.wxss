@@ -1,7 +1,8 @@
 .setting {
   display: flex;
   flex-direction: row;
-  height: 180rpx;
+  width:90%;
+  margin-top:20rpx;
 }
 
 #mychart-dom-multi-1 {

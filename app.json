@@ -13,7 +13,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor": "#004EA2",
+    "selectedColor": "#09bb07",
     "list": [
       {
         "pagePath": "pages/flow/flow",
