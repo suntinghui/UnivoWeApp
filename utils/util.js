@@ -78,13 +78,20 @@ function getMonthInfo(yyyyMMdd) {
   console.log(lastdate);
 }
 
+// 将自符串byte转化成TB
+function convertByteToTB(b) {
+  var TB = new Number(b) / 1024 / 1024 / 1024 / 1024;
+  return parseFloat(TB.toFixed(2));
+}
+
 module.exports = {
   formatTime: formatTime,
   getCurrentDate: getCurrentDate,
   convertStringFromDate: convertStringFromDate,
   convertDateFromString: convertDateFromString,
   getWeekInfo: getWeekInfo,
-  getMonthInfo: getMonthInfo
+  getMonthInfo: getMonthInfo,
+  convertByteToTB: convertByteToTB
 }
 
 

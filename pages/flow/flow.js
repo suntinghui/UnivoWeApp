@@ -133,7 +133,7 @@ function requestChart1() {
     url: 'https://wx.cne-c.com/mobile/api/app',
     method: 'GET',
     data: {
-      start: '20180301',
+      start: '20180319',
       end: '20180321',
       dim:'app.flowtrend',
       type:'day'
@@ -159,89 +159,62 @@ function requestChart1() {
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 function refreshOption1(data) {
-  return {
-    color: ['#37a2da', '#32c5e9', '#67e0e3'],
+  var dt = [];
+  var up = [];
+  var down = [];
+
+  for (var i=0; i<data.length; i++) {
+    dt[i] = data[i].dt;
+    up[i] = util.convertByteToTB(data[i].app_upbytes);
+    down[i] = util.convertByteToTB(data[i].app_downbytes);
+  }
+
+  console.log(dt);
+  console.log(up);
+  console.log(down);
+  
+  up = [2.94,2.9,2.94];
+  down = [20.38,21.06,22.17];
+
+  var option = {
+    title: {
+      text: '7天流量走势图'
+    },
     tooltip: {
       trigger: 'axis',
-      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
       }
-    },
-    legend: {
-      data: ['热度', '正面', '负面']
     },
     grid: {
-      left: 20,
-      right: 20,
-      bottom: 15,
-      top: 40,
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
       containLabel: true
     },
-    xAxis: [
-      {
-        type: 'value',
-        axisLine: {
-          lineStyle: {
-            color: '#999'
-          }
-        },
-        axisLabel: {
-          color: '#666'
-        }
+    xAxis: [{
+      type: 'category',
+      data: dt
+    }],
+    yAxis: [{
+      type: 'value',
+      name: '流量(TB)',
+      axisLabel: {
+        formatter: '{value}'
       }
-    ],
-    yAxis: [
-      {
-        type: 'category',
-        axisTick: { show: false },
-        data: ['汽车之家', '今日头条', '百度贴吧', '一点资讯', '微信', '微博', '知乎'],
-        axisLine: {
-          lineStyle: {
-            color: '#999'
-          }
-        },
-        axisLabel: {
-          color: '#666'
-        }
-      }
-    ],
-    series: [
-      {
-        name: '热度',
-        type: 'bar',
-        label: {
-          normal: {
-            show: true,
-            position: 'inside'
-          }
-        },
-        data: [300, 270, 340, 344, 300, 320, 310]
-      },
-      {
-        name: '正面',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true
-          }
-        },
-        data: [120, 102, 141, 174, 190, 250, 220]
-      },
-      {
-        name: '负面',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'left'
-          }
-        },
-        data: [-20, -32, -21, -34, -90, -130, -110]
-      }
-    ]
+    }],
+    series: [{
+      name: '上行',
+      type: 'bar',
+      data: up
+    }, {
+      name: '下行',
+      type: 'bar',
+      data: down
+    }]
   };
+
+  return option;
 }
 
 function refreshOption2() {
