@@ -9,61 +9,61 @@
   width:90%;
   height:50%;
   margin-top:180rpx;
-  margin-bottom:10rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-2 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-3 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-4 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-5 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-6 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-7 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-8 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
 
 #mychart-dom-multi-9 {
   width:90%;
   height:50%;
-  margin-top:10rpx;
-  margin-bottom:10rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
 }
