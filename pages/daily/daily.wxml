@@ -2,7 +2,7 @@
   <text class='currentDate'>{{currentDate}}</text>
 
   <view class="">
-    <picker mode="date" value="{{currentDate}}" start="2010-01-01" end="2025-12-31" bindchange='changeDate'>
+    <picker mode="date" value="{{currentDate}}" start="2010-01-01" end="{{currentDate}}" bindchange='changeDate'>
       <button class='changeDateBtn'>切换日期</button>
     </picker>
   </view>

@@ -10,7 +10,8 @@
     "backgroundColor": "#eee",
     "navigationBarBackgroundColor": "#eee",
     "navigationBarTitleText": "中网优能",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "selectedColor": "#09bb07",
