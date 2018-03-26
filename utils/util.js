@@ -25,6 +25,14 @@ function getCurrentDate() {
   }
 }
 
+// 取得昨天日期
+function getYesterday() {
+  var day1 = new Date();
+  day1.setTime(day1.getTime() - 24 * 60 * 60 * 1000);
+  var s1 = day1.getFullYear() + "-" + (day1.getMonth() + 1) + "-" + day1.getDate();
+  return s1;
+}
+
 // 将给定的date转换成yyyy-MM-dd
 function convertStringFromDate(date) {
   var month = date.getMonth() + 1;
@@ -58,6 +66,7 @@ function getWeekInfo(yyyyMMdd) {
 
   console.log(convertStringFromDate(new Date(MondayTime)));
   console.log(convertStringFromDate(new Date(SundayTime)));
+  return [convertStringFromDate(new Date(MondayTime)), convertStringFromDate(new Date(SundayTime))];
 }
 
 // 获取给定日期所在月的第一天和最后一天
@@ -76,6 +85,8 @@ function getMonthInfo(yyyyMMdd) {
 
   console.log(firstdate);
   console.log(lastdate);
+
+  return [firstdate, lastdate];
 }
 
 // 将自符串byte转化成TB
@@ -87,6 +98,7 @@ function convertByteToTB(b) {
 module.exports = {
   formatTime: formatTime,
   getCurrentDate: getCurrentDate,
+  getYesterday: getYesterday,
   convertStringFromDate: convertStringFromDate,
   convertDateFromString: convertDateFromString,
   getWeekInfo: getWeekInfo,

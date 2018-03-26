@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.currentDate {
+.selectedDate {
   flex: 1;
 }
 

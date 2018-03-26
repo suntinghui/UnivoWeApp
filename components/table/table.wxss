@@ -3,6 +3,7 @@
   border-right: 0;
   border-bottom: 0;
   width: 720rpx;
+  font-size: 12px;
 }
 .tr {
   width: 100%;

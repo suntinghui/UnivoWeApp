@@ -3,11 +3,12 @@ var app = getApp();
 
 Page({
   data: {
-    currentDate: util.getCurrentDate(),
+    selectedDate: app.globalData.queryDate,
+    maxDate:util.getYesterday(),
 
-    dateTypeArr: [{ name: 'day', value: '按天', checked: true },
-    { name: 'week', value: '按周', checked: false },
-    { name: 'month', value: '按月', checked: false }],
+    dateTypeArr: [{ name: 'day', value: '日报', checked: true },
+    { name: 'week', value: '周报', checked: false },
+    { name: 'month', value: '月报', checked: false }],
 
     deviceArray: [{ name: 'device01', value: '设备1', checked: true },
     { name: 'device02', value: '设备2', checked: false },
@@ -15,10 +16,16 @@ Page({
     { name: 'device04', value: '设备4', checked: true },]
   },
 
+  onLoad: function (e) {
+    this.setData({
+      selectedDate: app.globalData.queryDate
+    });
+  },
+
   // 切换日期操作
   changeDate: function (e) {
     this.setData({
-      currentDate: e.detail.value
+      selectedDate: e.detail.value
     });
 
     app.globalData.queryDate = e.detail.value;

@@ -147,15 +147,16 @@ function requestCharts() {
 }
 
 function requestChart1() {
-
   wx.showNavigationBarLoading();
+
+  var weekInfo = util.getWeekInfo(app.globalData.queryDate);
 
   wx.request({
     url: 'https://wx.cne-c.com/mobile/api/app',
     method: 'GET',
     data: {
-      start: '20180319',
-      end: '20180321',
+      start: weekInfo[0],
+      end: weekInfo[1],
       dim: 'app.flowtrend',
       type: 'day'
     },
@@ -181,14 +182,16 @@ function requestChart1() {
 }
 
 function requestChart2() {
+  var monthInfo = util.getMonthInfo(app.globalData.queryDate);
+
   wx.showNavigationBarLoading();
 
   wx.request({
     url: 'https://wx.cne-c.com/mobile/api/app',
     method: 'GET',
     data: {
-      start: '20180305',
-      end: '20180318',
+      start: monthInfo[0],
+      end: monthInfo[1] ,
       dim: 'app.flowtrend',
       type: 'wk'
     },
@@ -220,8 +223,8 @@ function requestChart3() {
     url: 'https://wx.cne-c.com/mobile/api/app',
     method: 'GET',
     data: {
-      start: '20180301',
-      end: '20180321',
+      start: app.globalData.queryDate,
+      end: app.globalData.queryDate,
       dim: 'app.flowtrend',
       type: 'day'
     },
@@ -254,8 +257,8 @@ function requestChart4() {
     url: 'https://wx.cne-c.com/mobile/api/app',
     method: 'GET',
     data: {
-      start: '20180321',
-      end: '20180321',
+      start: app.globalData.queryDate,
+      end: app.globalData.queryDate,
       dim: 'app.apx',
       type: 'day'
     },

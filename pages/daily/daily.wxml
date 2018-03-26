@@ -1,8 +1,8 @@
 <view class='dateContent'>
-  <text class='currentDate'>{{currentDate}}</text>
+  <text class='selectedDate'>{{selectedDate}}</text>
 
   <view class="">
-    <picker mode="date" value="{{currentDate}}" start="2010-01-01" end="{{currentDate}}" bindchange='changeDate'>
+    <picker mode="date" value="{{selectedDate}}" start="2010-01-01" end="{{maxDate}}" bindchange='changeDate'>
       <button class='changeDateBtn'>切换日期</button>
     </picker>
   </view>
