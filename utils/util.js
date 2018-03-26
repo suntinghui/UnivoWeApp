@@ -54,19 +54,22 @@ function convertDateFromString(dateString) {
 
 // 获取给定日期所在周的周一和周日
 function getWeekInfo(yyyyMMdd) {
-  var oneDayLong = 24 * 60 * 60 * 1000;
+  var theDay = convertDateFromString(yyyyMMdd);
+  var monday = new Date(theDay.getTime());
+  var sunday = new Date(theDay.getTime());
+  monday.setDate(monday.getDate() + 1 - getChinaDay(monday));
+  sunday.setDate(sunday.getDate() + 7 - getChinaDay(sunday));
+  console.log(convertStringFromDate(monday) + " ----- " + convertStringFromDate(sunday));
+  return [convertStringFromDate(monday), convertStringFromDate(sunday)];
+}
 
-  var tempDate = convertDateFromString(yyyyMMdd);
-  var nowTime = tempDate.getTime();
-  var day = tempDate.getDay();
-  // 获取本周所在的周一
-  var MondayTime = nowTime - (day - 1) * oneDayLong;
-  // 获取本周所在的周日
-  var SundayTime = nowTime + (7 - day) * oneDayLong;
-
-  console.log(convertStringFromDate(new Date(MondayTime)));
-  console.log(convertStringFromDate(new Date(SundayTime)));
-  return [convertStringFromDate(new Date(MondayTime)), convertStringFromDate(new Date(SundayTime))];
+// 从 Date 对象返回一周中的某一天 (0 ~ 6)=》( 1-7)
+function getChinaDay(date) {
+  var theDay = date.getDay();
+  if (theDay == 0)
+    return 7;
+  else
+    return theDay;
 }
 
 // 获取给定日期所在月的第一天和最后一天
@@ -95,6 +98,22 @@ function convertByteToTB(b) {
   return parseFloat(TB.toFixed(2));
 }
 
+function getSelectMode(mode) {
+  if (mode == 'day') {
+    return '日报';
+  }
+
+  if (mode == 'wk') {
+    return '周报';
+  }
+
+  if (mode == 'mon') {
+    return '月报';
+  }
+
+  return '未知';
+}
+
 module.exports = {
   formatTime: formatTime,
   getCurrentDate: getCurrentDate,
@@ -103,7 +122,8 @@ module.exports = {
   convertDateFromString: convertDateFromString,
   getWeekInfo: getWeekInfo,
   getMonthInfo: getMonthInfo,
-  convertByteToTB: convertByteToTB
+  convertByteToTB: convertByteToTB,
+  getSelectMode: getSelectMode
 }
 
 

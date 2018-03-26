@@ -4,12 +4,7 @@ var app = getApp();
 Page({
   data: {
     selectedDate: app.globalData.queryDate,
-    maxDate:util.getYesterday(),
-
-    dateTypeArr: [{ name: 'day', value: '日报', checked: true },
-    { name: 'week', value: '周报', checked: false },
-    { name: 'month', value: '月报', checked: false }],
-
+    maxDate: util.getYesterday(),
     deviceArray: [{ name: 'device01', value: '设备1', checked: true },
     { name: 'device02', value: '设备2', checked: false },
     { name: 'device03', value: '设备3', checked: true },
@@ -18,7 +13,10 @@ Page({
 
   onLoad: function (e) {
     this.setData({
-      selectedDate: app.globalData.queryDate
+      selectedDate: app.globalData.queryDate,
+      dateTypeArr: [{ name: 'day', value: '日报', checked: app.globalData.queryDateType == 'day' ? true : false },
+      { name: 'wk', value: '周报', checked: app.globalData.queryDateType == 'wk' ? true : false },
+      { name: 'mon', value: '月报', checked: app.globalData.queryDateType == 'mon' ? true : false }]
     });
   },
 
@@ -33,10 +31,11 @@ Page({
 
   // 切换查询日期类型
   radioChange: function (e) {
+    console.log(e.detail.value);
     app.globalData.queryDateType = e.detail.value;
   },
 
-  checkboxChange:function(e) {
+  checkboxChange: function (e) {
     app.globalData.queryDeviceArr = e.detail.value;
   }
 

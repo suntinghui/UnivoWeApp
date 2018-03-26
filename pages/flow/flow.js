@@ -10,6 +10,8 @@ var that;
 
 Page({
   data: {
+    selectDate: app.globalData.queryDate,
+    selectMode: util.getSelectMode(app.globalData.queryDateType),
     ec1: {
       onInit: function (canvas, width, height) {
         const chart1 = echarts.init(canvas, null, {
@@ -128,6 +130,11 @@ Page({
   },
 
   onShow: function () {
+    this.setData({
+      selectDate: app.globalData.queryDate,
+      selectMode: util.getSelectMode(app.globalData.queryDateType)
+    });
+
     requestCharts();
   },
 
@@ -191,7 +198,7 @@ function requestChart2() {
     method: 'GET',
     data: {
       start: monthInfo[0],
-      end: monthInfo[1] ,
+      end: monthInfo[1],
       dim: 'app.flowtrend',
       type: 'wk'
     },
@@ -226,7 +233,7 @@ function requestChart3() {
       start: app.globalData.queryDate,
       end: app.globalData.queryDate,
       dim: 'app.flowtrend',
-      type: 'day'
+      type: 'hour'
     },
     header: {
       'content-type': 'application/json' // 默认值
@@ -303,7 +310,7 @@ function refreshOption1(data) {
     legend: {
       data: ['上行', '下行'],
       align: 'right',
-      right:'0'
+      right: '0'
     },
     tooltip: {
       trigger: 'axis',
@@ -349,11 +356,13 @@ function refreshTable1(data) {
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
-    tableArr[i] = {dt:dt,
-    upbytes:up,
-    downbytes:down};
+    tableArr[i] = {
+      dt: dt,
+      upbytes: up,
+      downbytes: down
+    };
   }
- 
+
   that.setData({ listData1: tableArr });
 }
 
@@ -460,11 +469,6 @@ function refreshOption3(data) {
       bottom: '3%',
       containLabel: true
     },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
     xAxis: {
       type: 'category',
       boundaryGap: false,
@@ -494,7 +498,7 @@ function refreshOption3(data) {
 function refreshTable3(data) {
   var tableArr = [];
   for (var i = 0; i < data.length; i++) {
-    var dt = data[i].dt;
+    var dt = data[i].h + "点";
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
