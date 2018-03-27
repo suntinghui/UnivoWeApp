@@ -1,44 +1,37 @@
 <view class="container">
 
-  <view class="setting">
-    <image src='../../img/icons/topImg.png' mode='widthFix' style='width:350rpx;'></image>
-    <view class='seldate'>
-      <view style='font-size:14px;'>{{selectDate}}</view>
-      <view style='font-size:14px;'>{{selectMode}}</view>
-    </view>
-    <image style="width:60rpx;margin-top:30rpx;" mode='widthFix' src="../../img/icons/setting.png" bindtap='settingAction'></image>
-  </view>
+  <topbar selectDate="{{selectDate}}" selectMode="{{selectMode}}"></topbar>
 
   <!-- 7天流量走势图 -->
-  <ec-canvas id="mychart-dom-multi-1" canvas-id="mychart-multi-1" ec="{{ ec1 }}"></ec-canvas>
-  <table id="table1" listData="{{listData1}}"></table>
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-1" ec="{{ ec1 }}"></ec-canvas>
+  <table id="table1" titleData="{{titleData1}}"  listData="{{listData1}}"></table>
 
   <!-- 周流量走势图 -->
-  <ec-canvas id="mychart-dom-multi-2" canvas-id="mychart-multi-2" ec="{{ ec2 }}"></ec-canvas>
-  <table id="table2" listData="{{listData2}}"></table>
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-2" ec="{{ ec2 }}"></ec-canvas>
+  <table id="table2" titleData="{{titleData2}}" listData="{{listData2}}"></table>
 
   <!-- 当日流量状态 -->
-  <ec-canvas id="mychart-dom-multi-3" canvas-id="mychart-multi-3" ec="{{ ec3 }}"></ec-canvas>
-  <table id="table3" listData="{{listData3}}"></table>
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-3" ec="{{ ec3 }}"></ec-canvas>
+  <table id="table3" titleData="{{titleData3}}" listData="{{listData3}}"></table>
 
   <!-- 分协议流量分布 -->
-  <ec-canvas id="mychart-dom-multi-4" canvas-id="mychart-multi-4" ec="{{ ec4 }}"></ec-canvas>
-  <table id="table4" listData="{{listData4}}"></table>
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-4" ec="{{ ec4 }}"></ec-canvas>
+  <table id="table4" titleData="{{titleData4}}" listData="{{listData4}}"></table>
 
   <!-- 用户流量均值 -->
-  <!-- <ec-canvas id="mychart-dom-multi-5" canvas-id="mychart-multi-5" ec="{{ ec5 }}"></ec-canvas> -->
+  <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-5" ec="{{ ec5 }}"></ec-canvas> -->
 
   <!-- 区间流量用户分布 -->
-  <!-- <ec-canvas id="mychart-dom-multi-6" canvas-id="mychart-multi-6" ec="{{ ec6 }}"></ec-canvas> -->
+  <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-6" ec="{{ ec6 }}"></ec-canvas> -->
 
   <!-- 分运营商流量分布 -->
-  <!-- <ec-canvas id="mychart-dom-multi-7" canvas-id="mychart-multi-7" ec="{{ ec7 }}"></ec-canvas> -->
+  <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-7" ec="{{ ec7 }}"></ec-canvas> -->
 
   <!-- 目标地址流量分布 -->
-  <!-- <ec-canvas id="mychart-dom-multi-8" canvas-id="mychart-multi-8" ec="{{ ec8 }}"></ec-canvas> -->
+  <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-8" ec="{{ ec8 }}"></ec-canvas> -->
 
   <!-- 分运营商应用分布 -->
-  <!-- <ec-canvas id="mychart-dom-multi-9" canvas-id="mychart-multi-9" ec="{{ ec9 }}"></ec-canvas> -->
+  <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-9" ec="{{ ec9 }}"></ec-canvas> -->
 
 
 </view>

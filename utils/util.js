@@ -59,7 +59,7 @@ function getWeekInfo(yyyyMMdd) {
   var sunday = new Date(theDay.getTime());
   monday.setDate(monday.getDate() + 1 - getChinaDay(monday));
   sunday.setDate(sunday.getDate() + 7 - getChinaDay(sunday));
-  console.log(convertStringFromDate(monday) + " ----- " + convertStringFromDate(sunday));
+
   return [convertStringFromDate(monday), convertStringFromDate(sunday)];
 }
 
@@ -86,15 +86,18 @@ function getMonthInfo(yyyyMMdd) {
   var firstdate = year + '-' + month + '-01';
   var lastdate = year + '-' + month + '-' + day.getDate();
 
-  console.log(firstdate);
-  console.log(lastdate);
-
   return [firstdate, lastdate];
 }
 
 // 将自符串byte转化成TB
 function convertByteToTB(b) {
   var TB = new Number(b) / 1024 / 1024 / 1024 / 1024;
+  return parseFloat(TB.toFixed(2));
+}
+
+// 将自符串byte转化成GB
+function convertByteToGB(b) {
+  var TB = new Number(b) / 1024 / 1024 / 1024;
   return parseFloat(TB.toFixed(2));
 }
 
@@ -122,6 +125,7 @@ module.exports = {
   convertDateFromString: convertDateFromString,
   getWeekInfo: getWeekInfo,
   getMonthInfo: getMonthInfo,
+  convertByteToGB: convertByteToGB,
   convertByteToTB: convertByteToTB,
   getSelectMode: getSelectMode
 }

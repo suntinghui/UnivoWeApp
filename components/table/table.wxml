@@ -1,9 +1,9 @@
 <view class="container">
   <view class="table">
     <view class="tr">
-      <view class="th">统计</view>
-      <view class="th">上行(TB)</view>
-      <view class="th">下行(TB)</view>
+      <view class="th">{{titleData[0]}}</view>
+      <view class="th">{{titleData[1]}}</view>
+      <view class="th">{{titleData[2]}}</view>
     </view>
     <view class="tr" wx:for="{{listData}}">
       <view class="td">{{item.dt}}</view>

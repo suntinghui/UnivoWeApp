@@ -1,0 +1,8 @@
+<view class="setting" >
+  <image src='../../img/icons/topImg.png' mode='widthFix' style='width:350rpx;'></image>
+  <view class='seldate'>
+    <view style='font-size:14px;'>{{selectDate}}</view>
+    <view style='font-size:14px;'>{{selectMode}}</view>
+  </view>
+  <image style="width:60rpx;margin-top:30rpx;" mode='widthFix' src="../../img/icons/setting.png" bindtap='settingAction'></image>
+</view>

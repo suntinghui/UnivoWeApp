@@ -1,5 +1,6 @@
 import * as echarts from '../../ec-canvas/echarts';
 import * as table from '../../components/table/table';
+import * as topbar from '../../components/topbar/topbar';
 
 var util = require('../../utils/util.js');
 
@@ -136,12 +137,6 @@ Page({
     });
 
     requestCharts();
-  },
-
-  settingAction: function (event) {
-    wx.navigateTo({
-      url: '../daily/daily'
-    })
   },
 
 });
@@ -350,6 +345,8 @@ function refreshOption1(data) {
 }
 
 function refreshTable1(data) {
+
+
   var tableArr = [];
   for (var i = 0; i < data.length; i++) {
     var dt = data[i].dt;
@@ -363,7 +360,7 @@ function refreshTable1(data) {
     };
   }
 
-  that.setData({ listData1: tableArr });
+  that.setData({ titleData1: ["日期", "上行(TB)", "下行(TB)"], listData1: tableArr });
 }
 
 function refreshOption2(data) {
@@ -437,7 +434,7 @@ function refreshTable2(data) {
     };
   }
 
-  that.setData({ listData2: tableArr });
+  that.setData({ titleData2: ["日期", "上行(TB)", "下行(TB)"], listData2: tableArr });
 }
 
 function refreshOption3(data) {
@@ -446,7 +443,7 @@ function refreshOption3(data) {
   var down = [];
 
   for (var i = 0; i < data.length; i++) {
-    dt[i] = data[i].dt;
+    dt[i] = data[i].h;
     up[i] = util.convertByteToTB(data[i].app_upbytes);
     down[i] = util.convertByteToTB(data[i].app_downbytes);
   }
@@ -509,7 +506,7 @@ function refreshTable3(data) {
     };
   }
 
-  that.setData({ listData3: tableArr });
+  that.setData({ titleData3: ["时间", "上行(TB)", "下行(TB)"], listData3: tableArr });
 }
 
 function refreshOption4(data) {
@@ -567,7 +564,7 @@ function refreshTable4(data) {
     };
   }
 
-  that.setData({ listData4: tableArr });
+  that.setData({ titleData4: ["类别", "上行(TB)", "下行(TB)"], listData4: tableArr });
 }
 
 function refreshOption5() {
