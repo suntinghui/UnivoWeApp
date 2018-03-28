@@ -167,7 +167,11 @@ function refreshOption1(data) {
       data: dt
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      name: '流量(GB)',
+      axisLabel: {
+        formatter: '{value}'
+      }
     },
     series: [
       {

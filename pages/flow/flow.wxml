@@ -19,7 +19,8 @@
   <table id="table4" titleData="{{titleData4}}" listData="{{listData4}}"></table>
 
   <!-- 用户流量均值 -->
-  <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-5" ec="{{ ec5 }}"></ec-canvas> -->
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-5" ec="{{ ec5 }}"></ec-canvas>
+  <table id="table5" titleData="{{titleData5}}" listData="{{listData5}}"></table>
 
   <!-- 区间流量用户分布 -->
   <!-- <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-6" ec="{{ ec6 }}"></ec-canvas> -->

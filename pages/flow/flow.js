@@ -68,7 +68,7 @@ Page({
           height: height
         });
         canvas.setChart(chart5);
-
+        app.chart5 = chart5;
         chart5.setOption(refreshOption5(initData));
       }
     },
@@ -80,7 +80,7 @@ Page({
           height: height
         });
         canvas.setChart(chart6);
-
+        app.chart6 = chart6;
         chart6.setOption(refreshOption6(initData));
       }
     },
@@ -92,7 +92,7 @@ Page({
           height: height
         });
         canvas.setChart(chart7);
-
+        app.chart7 = chart7;
         chart7.setOption(refreshOption7(initData));
       }
     },
@@ -104,7 +104,7 @@ Page({
           height: height
         });
         canvas.setChart(chart8);
-
+        app.chart8 = chart8;
         chart8.setOption(refreshOption8(initData));
       }
     },
@@ -116,7 +116,7 @@ Page({
           height: height
         });
         canvas.setChart(chart9);
-
+        app.chart9 = chart9;
         chart9.setOption(refreshOption9(initData));
       }
     },
@@ -146,6 +146,7 @@ function requestCharts() {
   requestChart2();
   requestChart3();
   requestChart4();
+  requestChart5();
 }
 
 function requestChart1() {
@@ -273,6 +274,42 @@ function requestChart4() {
       app.chart4.setOption(refreshOption4(res.data));
 
       refreshTable4(res.data);
+
+    },
+    fail: function (e) {
+      console.log(e);
+
+    },
+    complete: function () {
+      wx.hideNavigationBarLoading();
+    }
+  })
+}
+
+// 用户流量均值
+function requestChart5() {
+  wx.showNavigationBarLoading();
+
+  var monthInfo = util.getMonthInfo(app.globalData.queryDate);
+
+  wx.request({
+    url: 'https://wx.cne-c.com/mobile/api/app',
+    method: 'GET',
+    data: {
+      start: monthInfo[0],
+      end: monthInfo[1],
+      dim: 'app.user',
+      type: 'day'
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      console.log(res.data);
+
+      app.chart5.setOption(refreshOption5(res.data));
+
+      refreshTable5(res.data);
 
     },
     fail: function (e) {
@@ -567,16 +604,28 @@ function refreshTable4(data) {
   that.setData({ titleData4: ["类别", "上行(TB)", "下行(TB)"], listData4: tableArr });
 }
 
-function refreshOption5() {
+function refreshOption5(data) {
+  var dt = [];
+  var up = [];
+  var down = [];
+
+  for (var i = 0; i < data.length; i++) {
+    dt[i] = data[i].dt;
+    up[i] = util.convertByteToGB(data[i].avg_up);
+    down[i] = util.convertByteToGB(data[i].avg_down);
+  }
+
   var option = {
     title: {
-      text: '7天流量走势图'
+      text: '用户流量均值'
+    },
+    legend: {
+      data: ['上行', '下行'],
+      align: 'right',
+      right: '0'
     },
     tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-      }
+      trigger: 'axis'
     },
     grid: {
       left: '3%',
@@ -584,29 +633,47 @@ function refreshOption5() {
       bottom: '3%',
       containLabel: true
     },
-    xAxis: [{
+    xAxis: {
       type: 'category',
-      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
-    }],
-    yAxis: [{
-      type: 'value',
-      name: '总价(万元)',
-      axisLabel: {
-        formatter: '{value}'
+      boundaryGap: false,
+      data: dt
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        name: '上行',
+        type: 'line',
+        stack: '流量(GB)',
+        data: up
+      },
+      {
+        name: '下行',
+        type: 'line',
+        stack: '流量(GB)',
+        data: down
       }
-    }],
-    series: [{
-      name: '包租费',
-      type: 'bar',
-      data: [20, 12, 31, 34, 31]
-    }, {
-      name: '装修费',
-      type: 'bar',
-      data: [10, 20, 5, 9, 3]
-    }]
+    ]
   };
-
   return option;
+}
+
+function refreshTable5(data) {
+  var tableArr = [];
+  for (var i = 0; i < data.length; i++) {
+    var dt = data[i].dt;
+    var up = util.convertByteToGB(data[i].avg_up);
+    var down = util.convertByteToGB(data[i].avg_down);
+
+    tableArr[i] = {
+      dt: dt,
+      upbytes: up,
+      downbytes: down
+    };
+  }
+
+  that.setData({ titleData5: ["日期", "上行(GB)", "下行(GB)"], listData5: tableArr });
 }
 
 function refreshOption6() {
