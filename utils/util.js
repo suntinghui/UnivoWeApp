@@ -29,7 +29,15 @@ function getCurrentDate() {
 function getYesterday() {
   var day1 = new Date();
   day1.setTime(day1.getTime() - 24 * 60 * 60 * 1000);
-  var s1 = day1.getFullYear() + "-" + (day1.getMonth() + 1) + "-" + day1.getDate();
+  var month = day1.getMonth() + 1;
+
+  var s1;
+  if (month < 10) {
+    s1 = day1.getFullYear() + "-0" + (day1.getMonth() + 1) + "-" + day1.getDate();
+  } else {
+    s1 = day1.getFullYear() + "-" + (day1.getMonth() + 1) + "-" + day1.getDate();
+  }
+  
   return s1;
 }
 
@@ -43,18 +51,9 @@ function convertStringFromDate(date) {
   }
 }
 
-// 将yyyy-MM-dd格式的字符串转换成Date
-function convertDateFromString(dateString) {
-  if (dateString) {
-    var date = new Date(dateString.replace(/-/, "/"))
-
-    return date;
-  }
-}
-
 // 获取给定日期所在周的周一和周日
 function getWeekInfo(yyyyMMdd) {
-  var theDay = convertDateFromString(yyyyMMdd);
+  var theDay = new Date(yyyyMMdd);
   var monday = new Date(theDay.getTime());
   var sunday = new Date(theDay.getTime());
   monday.setDate(monday.getDate() + 1 - getChinaDay(monday));
@@ -74,7 +73,7 @@ function getChinaDay(date) {
 
 // 获取给定日期所在月的第一天和最后一天
 function getMonthInfo(yyyyMMdd) {
-  var tempDate = convertDateFromString(yyyyMMdd);
+  var tempDate = new Date(yyyyMMdd);
   var year = tempDate.getFullYear();
   var month = tempDate.getMonth() + 1;
   var day = new Date(year, month, 0);
@@ -122,7 +121,6 @@ module.exports = {
   getCurrentDate: getCurrentDate,
   getYesterday: getYesterday,
   convertStringFromDate: convertStringFromDate,
-  convertDateFromString: convertDateFromString,
   getWeekInfo: getWeekInfo,
   getMonthInfo: getMonthInfo,
   convertByteToGB: convertByteToGB,

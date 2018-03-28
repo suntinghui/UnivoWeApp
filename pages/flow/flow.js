@@ -3,11 +3,13 @@ import * as table from '../../components/table/table';
 import * as topbar from '../../components/topbar/topbar';
 
 var util = require('../../utils/util.js');
+var log = require('../../utils/log.js')
 
 const initData = [];
 
-var app = getApp();
 var that;
+
+var app = getApp();
 
 Page({
   data: {
@@ -20,8 +22,8 @@ Page({
           height: height
         });
         canvas.setChart(chart1);
-        app.chart1 = chart1;
-        chart1.setOption(refreshOption1(initData));
+        that.chart1 = chart1;
+        refreshOption1(initData);
       }
     },
 
@@ -32,8 +34,8 @@ Page({
           height: height
         });
         canvas.setChart(chart2);
-        app.chart2 = chart2;
-        chart2.setOption(refreshOption2([initData]));
+        that.chart2 = chart2;
+        refreshOption2(initData)
       }
     },
 
@@ -44,8 +46,8 @@ Page({
           height: height
         });
         canvas.setChart(chart3);
-        app.chart3 = chart3;
-        chart3.setOption(refreshOption3(initData));
+        that.chart3 = chart3;
+        refreshOption3(initData)
       }
     },
 
@@ -56,8 +58,8 @@ Page({
           height: height
         });
         canvas.setChart(chart4);
-        app.chart4 = chart4;
-        chart4.setOption(refreshOption4(initData));
+        that.chart4 = chart4;
+        refreshOption4(initData)
       }
     },
 
@@ -68,58 +70,11 @@ Page({
           height: height
         });
         canvas.setChart(chart5);
-        app.chart5 = chart5;
-        chart5.setOption(refreshOption5(initData));
+        that.chart5 = chart5;
+        refreshOption5(initData)
       }
     },
 
-    ec6: {
-      onInit: function (canvas, width, height) {
-        const chart6 = echarts.init(canvas, null, {
-          width: width,
-          height: height
-        });
-        canvas.setChart(chart6);
-        app.chart6 = chart6;
-        chart6.setOption(refreshOption6(initData));
-      }
-    },
-
-    ec7: {
-      onInit: function (canvas, width, height) {
-        const chart7 = echarts.init(canvas, null, {
-          width: width,
-          height: height
-        });
-        canvas.setChart(chart7);
-        app.chart7 = chart7;
-        chart7.setOption(refreshOption7(initData));
-      }
-    },
-
-    ec8: {
-      onInit: function (canvas, width, height) {
-        const chart8 = echarts.init(canvas, null, {
-          width: width,
-          height: height
-        });
-        canvas.setChart(chart8);
-        app.chart8 = chart8;
-        chart8.setOption(refreshOption8(initData));
-      }
-    },
-
-    ec9: {
-      onInit: function (canvas, width, height) {
-        const chart9 = echarts.init(canvas, null, {
-          width: width,
-          height: height
-        });
-        canvas.setChart(chart9);
-        app.chart9 = chart9;
-        chart9.setOption(refreshOption9(initData));
-      }
-    },
   },
 
   onReady: function () {
@@ -167,15 +122,15 @@ function requestChart1() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.d(res.data);
 
-      app.chart1.setOption(refreshOption1(res.data));
+      refreshOption1(res.data)
 
       refreshTable1(res.data);
 
     },
     fail: function (e) {
-      console.log(e);
+      log.d(e);
 
     },
     complete: function () {
@@ -202,14 +157,14 @@ function requestChart2() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.d(res.data);
 
-      app.chart2.setOption(refreshOption2(res.data));
+      refreshOption2(res.data)
 
       refreshTable2(res.data);
     },
     fail: function (e) {
-      console.log(e);
+      log.d(e);
 
     },
     complete: function () {
@@ -235,15 +190,15 @@ function requestChart3() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.d(res.data);
 
-      app.chart3.setOption(refreshOption3(res.data));
+      refreshOption3(res.data)
 
       refreshTable3(res.data);
 
     },
     fail: function (e) {
-      console.log(e);
+      log.d(e);
 
     },
     complete: function () {
@@ -269,15 +224,15 @@ function requestChart4() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.d(res.data);
 
-      app.chart4.setOption(refreshOption4(res.data));
+      refreshOption4(res.data)
 
       refreshTable4(res.data);
 
     },
     fail: function (e) {
-      console.log(e);
+      log.d(e);
 
     },
     complete: function () {
@@ -305,15 +260,15 @@ function requestChart5() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.d(res.data);
 
-      app.chart5.setOption(refreshOption5(res.data));
+      refreshOption5(res.data)
 
       refreshTable5(res.data);
 
     },
     fail: function (e) {
-      console.log(e);
+      log.d(e);
 
     },
     complete: function () {
@@ -378,12 +333,10 @@ function refreshOption1(data) {
     }]
   };
 
-  return option;
+  that.chart1.setOption(option);
 }
 
 function refreshTable1(data) {
-
-
   var tableArr = [];
   for (var i = 0; i < data.length; i++) {
     var dt = data[i].dt;
@@ -454,7 +407,7 @@ function refreshOption2(data) {
     }]
   };
 
-  return option;
+  that.chart2.setOption(option);
 }
 
 function refreshTable2(data) {
@@ -526,7 +479,8 @@ function refreshOption3(data) {
       }
     ]
   };
-  return option;
+
+  that.chart3.setOption(option);
 }
 
 function refreshTable3(data) {
@@ -584,7 +538,7 @@ function refreshOption4(data) {
     ]
   };
 
-  return option;
+  that.chart4.setOption(option);
 }
 
 function refreshTable4(data) {
@@ -656,7 +610,7 @@ function refreshOption5(data) {
       }
     ]
   };
-  return option;
+  that.chart5.setOption(option);
 }
 
 function refreshTable5(data) {
@@ -674,172 +628,4 @@ function refreshTable5(data) {
   }
 
   that.setData({ titleData5: ["日期", "上行(GB)", "下行(GB)"], listData5: tableArr });
-}
-
-function refreshOption6() {
-  var option = {
-    title: {
-      text: '7天流量走势图'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [{
-      type: 'category',
-      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
-    }],
-    yAxis: [{
-      type: 'value',
-      name: '总价(万元)',
-      axisLabel: {
-        formatter: '{value}'
-      }
-    }],
-    series: [{
-      name: '包租费',
-      type: 'bar',
-      data: [20, 12, 31, 34, 31]
-    }, {
-      name: '装修费',
-      type: 'bar',
-      data: [10, 20, 5, 9, 3]
-    }]
-  };
-
-  return option;
-}
-
-function refreshOption7() {
-  var option = {
-    title: {
-      text: '7天流量走势图'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [{
-      type: 'category',
-      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
-    }],
-    yAxis: [{
-      type: 'value',
-      name: '总价(万元)',
-      axisLabel: {
-        formatter: '{value}'
-      }
-    }],
-    series: [{
-      name: '包租费',
-      type: 'bar',
-      data: [20, 12, 31, 34, 31]
-    }, {
-      name: '装修费',
-      type: 'bar',
-      data: [10, 20, 5, 9, 3]
-    }]
-  };
-
-  return option;
-}
-
-function refreshOption8() {
-  var option = {
-    title: {
-      text: '7天流量走势图'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [{
-      type: 'category',
-      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
-    }],
-    yAxis: [{
-      type: 'value',
-      name: '总价(万元)',
-      axisLabel: {
-        formatter: '{value}'
-      }
-    }],
-    series: [{
-      name: '包租费',
-      type: 'bar',
-      data: [20, 12, 31, 34, 31]
-    }, {
-      name: '装修费',
-      type: 'bar',
-      data: [10, 20, 5, 9, 3]
-    }]
-  };
-
-  return option;
-}
-
-function refreshOption9() {
-  var option = {
-    title: {
-      text: '7天流量走势图'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [{
-      type: 'category',
-      data: ['新虹桥', '中山公园', '虹桥', '镇宁路', '天山古北']
-    }],
-    yAxis: [{
-      type: 'value',
-      name: '总价(万元)',
-      axisLabel: {
-        formatter: '{value}'
-      }
-    }],
-    series: [{
-      name: '包租费',
-      type: 'bar',
-      data: [20, 12, 31, 34, 31]
-    }, {
-      name: '装修费',
-      type: 'bar',
-      data: [10, 20, 5, 9, 3]
-    }]
-  };
-
-  return option;
 }

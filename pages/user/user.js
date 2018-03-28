@@ -6,8 +6,9 @@ var util = require('../../utils/util.js');
 
 const initData = [];
 
-var app = getApp();
 var that;
+
+var app = getApp();
 
 Page({
   data: {
@@ -20,8 +21,8 @@ Page({
           height: height
         });
         canvas.setChart(chart1);
-        app.chart1 = chart1;
-        chart1.setOption(refreshOption1(initData));
+        that.chart1 = chart1;
+        refreshOption1(initData)
       }
     },
 
@@ -32,8 +33,8 @@ Page({
           height: height
         });
         canvas.setChart(chart2);
-        app.chart2 = chart2;
-        chart2.setOption(refreshOption2([initData]));
+        that.chart2 = chart2;
+        refreshOption2(initData)
       }
     },
   },
@@ -83,7 +84,7 @@ function requestChart1() {
     success: function (res) {
       console.log(res.data);
 
-      app.chart1.setOption(refreshOption1(res.data));
+      refreshOption1(res.data)
 
       refreshTable1(res.data);
 
@@ -116,7 +117,7 @@ function requestChart2() {
     success: function (res) {
       console.log(res.data);
 
-      app.chart2.setOption(refreshOption2(res.data));
+      refreshOption2(res.data)
 
       refreshTable2(res.data);
     },
@@ -188,7 +189,8 @@ function refreshOption1(data) {
       }
     ]
   };
-  return option;
+
+  that.chart1.setOption(option);
 }
 
 function refreshTable1(data) {
@@ -262,7 +264,7 @@ function refreshOption2(data) {
     }]
   };
 
-  return option;
+  that.chart2.setOption(option);
 }
 
 function refreshTable2(data) {
