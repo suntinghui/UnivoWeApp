@@ -10,6 +10,12 @@
   <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-2" ec="{{ ec2 }}"></ec-canvas>
   <table id="table2" titleData="{{titleData2}}" listData="{{listData2}}"></table>
 
+
+
+  <!-- 贡献账户30天趋势图 -->
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-7" ec="{{ ec7 }}"></ec-canvas>
+  <table id="table7" titleData="{{titleData7}}" listData="{{listData7}}"></table>
+
   
 
 

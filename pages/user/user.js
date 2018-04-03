@@ -22,7 +22,7 @@ Page({
         });
         canvas.setChart(chart1);
         that.chart1 = chart1;
-        refreshOption1(initData)
+        refreshOption1(initData);
       }
     },
 
@@ -34,7 +34,20 @@ Page({
         });
         canvas.setChart(chart2);
         that.chart2 = chart2;
-        refreshOption2(initData)
+        refreshOption2(initData);
+      }
+    },
+
+
+    ec7: {
+      onInit: function (canvas, width, height) {
+        const chart7 = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(chart7);
+        that.chart7 = chart7;
+        refreshOption7(initData);
       }
     },
   },
@@ -61,6 +74,7 @@ Page({
 function requestCharts() {
   requestChart1();
   requestChart2();
+  requestChart7();
 }
 
 // 活跃用户月走势图
@@ -120,6 +134,41 @@ function requestChart2() {
       refreshOption2(res.data)
 
       refreshTable2(res.data);
+    },
+    fail: function (e) {
+      console.log(e);
+
+    },
+    complete: function () {
+      wx.hideNavigationBarLoading();
+    }
+  })
+}
+
+
+function requestChart7() {
+  wx.showNavigationBarLoading();
+
+  var monthInfo = util.getMonthInfo(app.globalData.queryDate);
+
+  wx.request({
+    url: 'https://wx.cne-c.com/mobile/api/app',
+    method: 'GET',
+    data: {
+      start: monthInfo[0],
+      end: monthInfo[1],
+      dim: 'app.user',
+      type: 'day'
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      console.log(res.data);
+
+      refreshOption7(res.data)
+
+      refreshTable7(res.data);
     },
     fail: function (e) {
       console.log(e);
@@ -200,11 +249,7 @@ function refreshTable1(data) {
     var up = util.convertByteToGB(data[i].avg_up);
     var down = util.convertByteToGB(data[i].avg_down);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData1: ["日期", "上行(GB)", "下行(GB)"], listData1: tableArr });
@@ -274,12 +319,72 @@ function refreshTable2(data) {
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData2: ["日期", "上行(GB)", "下行(GB)"], listData2: tableArr });
+}
+
+function refreshOption7(data) {
+  var dt = [];
+  var natipcnt = [];
+
+  for (var i = 0; i < data.length; i++) {
+    dt[i] = data[i].dt;
+    natipcnt[i] = data[i].natipcnt;
+  }
+
+  var option = {
+    title: {
+      text: '贡献账户30天趋势图'
+    },
+    legend: {
+      data: ['用户数'],
+      align: 'right',
+      right: '0'
+    },
+    tooltip: {
+      trigger: 'axis'
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: dt
+    },
+    yAxis: {
+      type: 'value',
+      name: '人数',
+      axisLabel: {
+        formatter: '{value}'
+      }
+    },
+    series: [
+      {
+        name: '用户数',
+        type: 'line',
+        stack: '人数',
+        data: natipcnt
+      }
+    ]
+  };
+
+  that.chart7.setOption(option);
+}
+
+function refreshTable7(data) {
+  var tableArr = [];
+  for (var i = 0; i < data.length; i++) {
+    var dt = data[i].dt;
+    var natipcnt = data[i].natipcnt;
+
+    tableArr[i] = [dt, natipcnt];
+  }
+
+  that.setData({ titleData7: ["日期", "用户数"], listData7: tableArr });
 }

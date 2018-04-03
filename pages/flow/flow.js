@@ -35,7 +35,7 @@ Page({
         });
         canvas.setChart(chart2);
         that.chart2 = chart2;
-        refreshOption2(initData)
+        refreshOption2(initData);
       }
     },
 
@@ -47,7 +47,7 @@ Page({
         });
         canvas.setChart(chart3);
         that.chart3 = chart3;
-        refreshOption3(initData)
+        refreshOption3(initData);
       }
     },
 
@@ -59,7 +59,7 @@ Page({
         });
         canvas.setChart(chart4);
         that.chart4 = chart4;
-        refreshOption4(initData)
+        refreshOption4(initData);
       }
     },
 
@@ -71,7 +71,7 @@ Page({
         });
         canvas.setChart(chart5);
         that.chart5 = chart5;
-        refreshOption5(initData)
+        refreshOption5(initData);
       }
     },
 
@@ -343,11 +343,7 @@ function refreshTable1(data) {
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData1: ["日期", "上行(TB)", "下行(TB)"], listData1: tableArr });
@@ -417,11 +413,7 @@ function refreshTable2(data) {
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData2: ["日期", "上行(TB)", "下行(TB)"], listData2: tableArr });
@@ -490,11 +482,7 @@ function refreshTable3(data) {
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData3: ["时间", "上行(TB)", "下行(TB)"], listData3: tableArr });
@@ -548,11 +536,7 @@ function refreshTable4(data) {
     var up = util.convertByteToTB(data[i].app_upbytes);
     var down = util.convertByteToTB(data[i].app_downbytes);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData4: ["类别", "上行(TB)", "下行(TB)"], listData4: tableArr });
@@ -620,11 +604,7 @@ function refreshTable5(data) {
     var up = util.convertByteToGB(data[i].avg_up);
     var down = util.convertByteToGB(data[i].avg_down);
 
-    tableArr[i] = {
-      dt: dt,
-      upbytes: up,
-      downbytes: down
-    };
+    tableArr[i] = [dt, up, down];
   }
 
   that.setData({ titleData5: ["日期", "上行(GB)", "下行(GB)"], listData5: tableArr });
