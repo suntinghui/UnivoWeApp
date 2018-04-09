@@ -14,15 +14,31 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+Date.prototype.format = function (fmt) {
+  var o = {
+    "M+": this.getMonth() + 1,                 //月份 
+    "d+": this.getDate(),                    //日 
+    "h+": this.getHours(),                   //小时 
+    "m+": this.getMinutes(),                 //分 
+    "s+": this.getSeconds(),                 //秒 
+    "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+    "S": this.getMilliseconds()             //毫秒 
+  };
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  }
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    }
+  }
+  return fmt;
+}
+
 // 取得当前的日期，格式为YYYY-MM-dd
 function getCurrentDate() {
   var myDate = new Date();
-  var month = myDate.getMonth() + 1;
-  if (month < 10) {
-    return myDate.getFullYear() + "-0" + month + "-" + myDate.getDate();
-  } else {
-    return myDate.getFullYear() + "-" + month + "-" + myDate.getDate();
-  }
+  return myDate.format("yyyy-MM-dd");
 }
 
 // 取得昨天日期
@@ -31,24 +47,9 @@ function getYesterday() {
   day1.setTime(day1.getTime() - 24 * 60 * 60 * 1000);
   var month = day1.getMonth() + 1;
 
-  var s1;
-  if (month < 10) {
-    s1 = day1.getFullYear() + "-0" + (day1.getMonth() + 1) + "-" + day1.getDate();
-  } else {
-    s1 = day1.getFullYear() + "-" + (day1.getMonth() + 1) + "-" + day1.getDate();
-  }
-  
-  return s1;
-}
+  var s = day1.format("yyyy-MM-dd");
 
-// 将给定的date转换成yyyy-MM-dd
-function convertStringFromDate(date) {
-  var month = date.getMonth() + 1;
-  if (month < 10) {
-    return date.getFullYear() + "-0" + month + "-" + date.getDate();
-  } else {
-    return date.getFullYear() + "-" + month + "-" + date.getDate();
-  }
+  return s;
 }
 
 // 获取给定日期所在周的周一和周日
@@ -59,7 +60,7 @@ function getWeekInfo(yyyyMMdd) {
   monday.setDate(monday.getDate() + 1 - getChinaDay(monday));
   sunday.setDate(sunday.getDate() + 7 - getChinaDay(sunday));
 
-  return [convertStringFromDate(monday), convertStringFromDate(sunday)];
+  return [monday.format("yyyy-MM-dd"), sunday.format("yyyy-MM-dd")];
 }
 
 // 从 Date 对象返回一周中的某一天 (0 ~ 6)=》( 1-7)
@@ -120,7 +121,6 @@ module.exports = {
   formatTime: formatTime,
   getCurrentDate: getCurrentDate,
   getYesterday: getYesterday,
-  convertStringFromDate: convertStringFromDate,
   getWeekInfo: getWeekInfo,
   getMonthInfo: getMonthInfo,
   convertByteToGB: convertByteToGB,

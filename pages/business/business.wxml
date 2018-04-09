@@ -1,2 +1,10 @@
-<!--pages/business/business.wxml-->
-<text>建设中...</text>
+<view class="container">
+
+  <topbar selectDate="{{selectDate}}" selectMode="{{selectMode}}"></topbar>
+
+  <!-- 7天流量走势图 -->
+  <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-1" ec="{{ ec1 }}"></ec-canvas>
+  <table id="table1" titleData="{{titleData1}}"  listData="{{listData1}}"></table>
+
+
+</view>
