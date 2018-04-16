@@ -3,7 +3,7 @@ import * as table from '../../components/table/table';
 import * as topbar from '../../components/topbar/topbar';
 
 var util = require('../../utils/util.js');
-var log = require('../../utils/log.js')
+var log = require('../../utils/log.js');
 
 const initData = [];
 
@@ -23,7 +23,7 @@ Page({
         });
         canvas.setChart(chart1);
         that.chart1 = chart1;
-        refreshOption1(initData);
+        //refreshOption1(initData);
       }
     },
 
@@ -35,7 +35,7 @@ Page({
         });
         canvas.setChart(chart2);
         that.chart2 = chart2;
-        refreshOption2(initData);
+        //refreshOption2(initData);
       }
     },
 
@@ -47,7 +47,7 @@ Page({
         });
         canvas.setChart(chart3);
         that.chart3 = chart3;
-        refreshOption3(initData);
+        //refreshOption3(initData);
       }
     },
 
@@ -59,7 +59,7 @@ Page({
         });
         canvas.setChart(chart4);
         that.chart4 = chart4;
-        refreshOption4(initData);
+        //refreshOption4(initData);
       }
     },
 
@@ -71,7 +71,7 @@ Page({
         });
         canvas.setChart(chart5);
         that.chart5 = chart5;
-        refreshOption5(initData);
+        //refreshOption5(initData);
       }
     },
 
@@ -94,6 +94,10 @@ Page({
     requestCharts();
   },
 
+  onHide: function () {
+    clearCharts();
+  },
+
 });
 
 function requestCharts() {
@@ -102,6 +106,14 @@ function requestCharts() {
   requestChart3();
   requestChart4();
   requestChart5();
+}
+
+function clearCharts() {
+  that.chart1.clear();
+  that.chart2.clear();
+  that.chart3.clear();
+  that.chart4.clear();
+  that.chart5.clear();
 }
 
 function requestChart1() {
@@ -122,16 +134,16 @@ function requestChart1() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      log.d(res.data);
+      log.dd("7天流量走势", res.data);
 
       refreshOption1(res.data)
 
       refreshTable1(res.data);
-
     },
     fail: function (e) {
-      log.d(e);
+      log.dd("7天流量走势", e);
 
+      refreshOption1(initData);
     },
     complete: function () {
       wx.hideNavigationBarLoading();
@@ -157,14 +169,16 @@ function requestChart2() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      log.d(res.data);
+      log.dd("周累计流量", res.data);
 
       refreshOption2(res.data)
 
       refreshTable2(res.data);
     },
     fail: function (e) {
-      log.d(e);
+      log.dd("周累计流量", e);
+
+      refreshOption2(initData);
 
     },
     complete: function () {
@@ -190,7 +204,7 @@ function requestChart3() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      log.d(res.data);
+      log.dd("当日流量状态", res.data);
 
       refreshOption3(res.data)
 
@@ -198,8 +212,9 @@ function requestChart3() {
 
     },
     fail: function (e) {
-      log.d(e);
+      log.dd("当日流量状态", e);
 
+      refreshOption3(initData);
     },
     complete: function () {
       wx.hideNavigationBarLoading();
@@ -224,15 +239,16 @@ function requestChart4() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      log.d(res.data);
+      log.dd("分协议流量分布", res.data);
 
       refreshOption4(res.data)
 
       refreshTable4(res.data);
-
     },
     fail: function (e) {
-      log.d(e);
+      log.dd("分协议流量分布", e);
+
+      refreshOption4(initData);
 
     },
     complete: function () {
@@ -260,7 +276,7 @@ function requestChart5() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      log.d(res.data);
+      log.dd("用户流量均值", res.data);
 
       refreshOption5(res.data)
 
@@ -268,8 +284,9 @@ function requestChart5() {
 
     },
     fail: function (e) {
-      log.d(e);
+      log.dd("用户流量均值", e);
 
+      refreshOption5(initData);
     },
     complete: function () {
       wx.hideNavigationBarLoading();

@@ -1,10 +1,10 @@
 <view class="container">
   <view class="table">
     <view class="tr">
-      <view class="th" wx:for="{{titleData}}">{{titleData[index]}}</view>
+      <view class="th" wx:for="{{titleData}}" wx:key="key">{{titleData[index]}}</view>
     </view>
-    <view class="tr" wx:for="{{listData}}" wx:for-index="index">
-      <view class="td" wx:for="{{listData[index]}}" wx:for-index="idx">{{listData[index][idx]}}</view>
+    <view class="tr" wx:for="{{listData}}" wx:for-index="index" wx:key="key">
+      <view class="td" wx:for="{{listData[index]}}" wx:for-index="idx" wx:key="key">{{listData[index][idx]}}</view>
     </view>
   </view>
 </view>

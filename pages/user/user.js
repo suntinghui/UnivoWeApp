@@ -3,6 +3,7 @@ import * as table from '../../components/table/table';
 import * as topbar from '../../components/topbar/topbar';
 
 var util = require('../../utils/util.js');
+var log = require('../../utils/log.js')
 
 const initData = [];
 
@@ -22,7 +23,6 @@ Page({
         });
         canvas.setChart(chart1);
         that.chart1 = chart1;
-        refreshOption1(initData);
       }
     },
 
@@ -34,7 +34,6 @@ Page({
         });
         canvas.setChart(chart2);
         that.chart2 = chart2;
-        refreshOption2(initData);
       }
     },
 
@@ -47,7 +46,6 @@ Page({
         });
         canvas.setChart(chart7);
         that.chart7 = chart7;
-        refreshOption7(initData);
       }
     },
   },
@@ -69,12 +67,22 @@ Page({
     requestCharts();
   },
 
+  onHide: function () {
+    clearCharts();
+  },
+
 });
 
 function requestCharts() {
   requestChart1();
   requestChart2();
   requestChart7();
+}
+
+function clearCharts() {
+  that.chart1.clear();
+  that.chart2.clear();
+  that.chart7.clear();
 }
 
 // 活跃用户月走势图
@@ -96,7 +104,7 @@ function requestChart1() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.dd("活跃用户月走势图", res.data);
 
       refreshOption1(res.data)
 
@@ -104,8 +112,9 @@ function requestChart1() {
 
     },
     fail: function (e) {
-      console.log(e);
+      log.dd("活跃用户月走势图", e);
 
+      refreshOption1(initData);
     },
     complete: function () {
       wx.hideNavigationBarLoading();
@@ -113,6 +122,7 @@ function requestChart1() {
   })
 }
 
+// 活跃用户24小时分布图
 function requestChart2() {
   wx.showNavigationBarLoading();
 
@@ -129,15 +139,16 @@ function requestChart2() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.dd("活跃用户24小时分布图", res.data);
 
       refreshOption2(res.data)
 
       refreshTable2(res.data);
     },
     fail: function (e) {
-      console.log(e);
+      log.dd("活跃用户24小时分布图", e);
 
+      refreshOption2(initData);
     },
     complete: function () {
       wx.hideNavigationBarLoading();
@@ -145,7 +156,7 @@ function requestChart2() {
   })
 }
 
-
+// 贡献账户30天趋势图
 function requestChart7() {
   wx.showNavigationBarLoading();
 
@@ -164,15 +175,16 @@ function requestChart7() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data);
+      log.dd("贡献账户30天趋势图", res.data);
 
       refreshOption7(res.data)
 
       refreshTable7(res.data);
     },
     fail: function (e) {
-      console.log(e);
+      log.dd("贡献账户30天趋势图", e);
 
+      refreshOption7(initData);
     },
     complete: function () {
       wx.hideNavigationBarLoading();

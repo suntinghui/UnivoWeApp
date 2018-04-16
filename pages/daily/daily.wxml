@@ -19,7 +19,7 @@
 
 <text class='tip'>请选择设备</text>
 <checkbox-group style='display: flex;flex-direction: column;' bindchange="checkboxChange">
-  <label class="checkbox" wx:for="{{deviceArray}}">
+  <label class="checkbox" wx:for="{{deviceArray}}" wx:key="key">
     <checkbox class='deviceCheckbox' value="{{item.name}}" checked="{{item.checked}}">{{item.value}}</checkbox>
   </label>
 </checkbox-group>

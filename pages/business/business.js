@@ -3,7 +3,7 @@ import * as table from '../../components/table/table';
 import * as topbar from '../../components/topbar/topbar';
 
 var util = require('../../utils/util.js');
-var log = require('../../utils/log.js')
+var log = require('../../utils/log.js');
 
 const initData = [];
 
@@ -46,10 +46,18 @@ Page({
     requestCharts();
   },
 
+  onHide: function () {
+    clearCharts();
+  },
+
 });
 
 function requestCharts() {
   requestChart1();
+}
+
+function clearCharts() {
+  that.chart1.clear();
 }
 
 function requestChart1() {
@@ -70,7 +78,7 @@ function requestChart1() {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      log.d(res.data);
+      log.dd("7天流量走势", res.data);
 
       refreshOption1(res.data)
 
@@ -78,8 +86,7 @@ function requestChart1() {
 
     },
     fail: function (e) {
-      log.d(e);
-
+      log.dd("7天流量走势", e);
     },
     complete: function () {
       wx.hideNavigationBarLoading();
