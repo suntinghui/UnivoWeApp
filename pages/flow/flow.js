@@ -1,6 +1,8 @@
 import * as echarts from '../../ec-canvas/echarts';
 import * as table from '../../components/table/table';
 import * as topbar from '../../components/topbar/topbar';
+import * as selectbar from '../../components/selectbar/selectbar';
+
 
 var util = require('../../utils/util.js');
 var log = require('../../utils/log.js');
@@ -11,8 +13,20 @@ var that;
 
 var app = getApp();
 
+var colors = ['#004565', '#00b8b2'];
+
 Page({
   data: {
+    imgUrls: [
+      '../../img/swipe/swipe01.jpg',
+      '../../img/swipe/swipe02.jpg'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 500,
+    swiperCurrent: 0,
+
     selectDate: app.globalData.queryDate,
     selectMode: util.getSelectMode(app.globalData.queryDateType),
     ec1: {
@@ -96,6 +110,12 @@ Page({
 
   onHide: function () {
     clearCharts();
+  },
+  swiperchange: function (e) {
+    //console.log(e.detail.current)
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
   },
 
 });
@@ -308,6 +328,7 @@ function refreshOption1(data) {
   }
 
   var option = {
+    color: colors,
     title: {
       text: '7天流量走势图'
     },
@@ -378,6 +399,7 @@ function refreshOption2(data) {
   }
 
   var option = {
+    color: colors,
     title: {
       text: '周累计流量图'
     },
@@ -448,6 +470,7 @@ function refreshOption3(data) {
   }
 
   var option = {
+    color: colors,
     title: {
       text: '当日流量状态'
     },
@@ -571,6 +594,7 @@ function refreshOption5(data) {
   }
 
   var option = {
+    color: colors,
     title: {
       text: '用户流量均值'
     },

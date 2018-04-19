@@ -8,13 +8,13 @@
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#eee",
-    "navigationBarBackgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "中网优能",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
   },
   "tabBar": {
-    "selectedColor": "#09bb07",
+    "selectedColor": "#004565",
     "list": [
       {
         "pagePath": "pages/flow/flow",

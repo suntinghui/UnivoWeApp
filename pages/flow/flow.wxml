@@ -1,10 +1,26 @@
 <view class="container">
 
-  <topbar selectDate="{{selectDate}}" selectMode="{{selectMode}}"></topbar>
+  <view class="swiper-container">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+      <block wx:for="{{imgUrls}}" wx:key="key">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="750rpx" height="450rpx" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+
+  <!-- <topbar selectDate="{{selectDate}}" selectMode="{{selectMode}}"></topbar> -->
+  <selectbar></selectbar>
 
   <!-- 7天流量走势图 -->
   <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-1" ec="{{ ec1 }}"></ec-canvas>
-  <table id="table1" titleData="{{titleData1}}"  listData="{{listData1}}"></table>
+  <table id="table1" titleData="{{titleData1}}" listData="{{listData1}}"></table>
 
   <!-- 周流量走势图 -->
   <ec-canvas class='mychart-dom-multi' canvas-id="mychart-multi-2" ec="{{ ec2 }}"></ec-canvas>

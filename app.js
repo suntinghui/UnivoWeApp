@@ -9,7 +9,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    DEBUG: true,
+    DEBUG: false,
     queryDate: "",// 查询日期
     queryDateType: "day", //查询类型
     queryDeviceArr: [] // 设备列表

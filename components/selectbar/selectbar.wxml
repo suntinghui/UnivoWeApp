@@ -1,0 +1,32 @@
+<view class="container">
+  <view class='part'>
+    <picker mode="date" value="{{selectedDate}}" start="2010-01-01" end="{{maxDate}}" bindchange='changeDate'>
+      <view class='center'>
+        <image src='../../img/topbar/top_date.png' class='leftImage'></image>
+        <text class='text'>日期</text>
+        <image src='../../img/topbar/top_arrow.png' class='rightImage'></image>
+      </view>
+    </picker>
+  </view>
+
+  <view class='vline' />
+  <view class='part'>
+    <picker mode="selector" value="0" bindchange='changeType' range="{{typeArray}}">
+      <view class='center'>
+        <image src='../../img/topbar/top_type.png' class='leftImage'></image>
+        <text class='text'>类型</text>
+        <image src='../../img/topbar/top_arrow.png' class='rightImage'></image>
+      </view>
+    </picker>
+  </view>
+  <view class='vline' />
+  <view class='part'>
+    <picker mode="selector" value="0" bindchange='changeDevice' range="{{deviceArray}}">
+      <view class='center'>
+        <image src='../../img/topbar/top_device.png' class='leftImage'></image>
+        <text class='text'>设备</text>
+        <image src='../../img/topbar/top_arrow.png' class='rightImage'></image>
+      </view>
+    </picker>
+  </view>
+</view>

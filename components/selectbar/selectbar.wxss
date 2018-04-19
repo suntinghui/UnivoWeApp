@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 700rpx;
+  height: 80rpx;
+  margin: 10rpx 25rpx;
+  align-items: center;
+  /* border: 1rpx solid #999999;
+  border-radius: 5px; */
+}
+
+.part {
+  display: flex;
+  flex-direction: row;
+  width: 33%;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftImage {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.text {
+  margin: auto 6px;
+  font-size: 13px;
+}
+
+.rightImage {
+  width: 26rpx;
+  height: 22rpx;
+}
+
+.vline {
+  width: 1px;
+  height: 50%;
+  background: #004565;
+}

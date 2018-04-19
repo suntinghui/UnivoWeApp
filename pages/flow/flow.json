@@ -2,6 +2,7 @@
   "usingComponents": {
     "ec-canvas": "../../ec-canvas/ec-canvas",
     "table":"../../components/table/table",
-    "topbar":"../../components/topbar/topbar"
+    "topbar":"../../components/topbar/topbar",
+    "selectbar": "../../components/selectbar/selectbar"
   }
 }
