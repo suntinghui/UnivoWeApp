@@ -30,8 +30,9 @@ Component({
   data: {
     selectedDate: app.globalData.queryDate,
     maxDate: util.getYesterday(),
-    typeArray:["日报","周报","月报"],
-    deviceArray: ["设备一", "设备二", "设备三", "设备四", "设备五", "设备六"],
+    typeArray: ["日报", "周报", "月报"],
+    deviceValue: [],
+    deviceArray: [{ name: 'A', value: '设备一' }, { name: 'B', value: '设备二' }, { name: 'C', value: '设备三' }, { name: 'D', value: '设备四' }, { name: 'E', value: '设备五' }, { name: 'F', value: '设备六' }]
   },
 
   /**
