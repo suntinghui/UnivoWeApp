@@ -3,7 +3,7 @@
     "pages/flow/flow",
     "pages/user/user",
     "pages/business/business",
-    "pages/daily/daily"
+    "pages/device/device"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,6 @@
+<checkbox-group style='display: flex;flex-direction: column;' bindchange="checkboxChange">
+  <view class="checkbox" wx:for="{{deviceArray}}" wx:key="key">
+    <checkbox class='deviceCheckbox' value="{{item.name}}" checked="{{item.checked}}"></checkbox>
+    <text class='value'>{{item.value}}</text>
+  </view>
+</checkbox-group>

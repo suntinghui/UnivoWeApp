@@ -1,0 +1,20 @@
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.deviceCheckbox{
+  margin-left: 60rpx;
+  margin-top: 40rpx;
+  zoom: 80%;
+}
+
+.value {
+  margin-top: 30rpx;
+  font-size: 14px;
+  margin-left: 20rpx;
+
+}
+
+

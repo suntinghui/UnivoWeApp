@@ -47,8 +47,10 @@ Component({
       app.globalData.queryDateType = e.detail.value;
     },
 
-    changeDevice: function (e) {
-      app.globalData.queryDateType = e.detail.value;
+    selectDevice: function (e) {
+      wx.navigateTo({
+        url: '../device/device'
+      })
     },
 
   }

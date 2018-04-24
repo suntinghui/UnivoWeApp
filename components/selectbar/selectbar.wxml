@@ -20,13 +20,11 @@
     </picker>
   </view>
   <view class='vline' />
-  <view class='part' style='margin-top:4px;'>
-  <multi-selector class='selector' value='{{deviceValue}}' bindchange='changeDevice' bindmodalopen='onModalOpen' placeholder='' items='{{deviceArray}}' bindmodalclose='onModalClose' show-value='{{false}}'>
-      <view class='center'>
-        <image src='../../img/topbar/top_device.png' class='leftImage'></image>
-        <text class='text'>设备</text>
-        <image src='../../img/topbar/top_arrow.png' class='rightImage'></image>
-      </view>
-    </multi-selector>
+  <view class='part' bindtap='selectDevice'>
+    <view class='center'>
+      <image src='../../img/topbar/top_device.png' class='leftImage'></image>
+      <text class='text'>设备</text>
+      <image src='../../img/topbar/top_arrow.png' class='rightImage'></image>
+    </view>
   </view>
 </view>

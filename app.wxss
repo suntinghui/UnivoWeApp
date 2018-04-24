@@ -24,4 +24,5 @@
   height:50%;
   margin-top:40rpx;
   margin-bottom:20rpx;
+  z-index: 1;
 }
